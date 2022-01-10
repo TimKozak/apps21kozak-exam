@@ -1,7 +1,14 @@
 package app;
 
-import domain.*;
-import json.*;
+import domain.Student;
+import domain.BasicStudent;
+import json.Json;
+import json.JsonPair;
+import json.JsonString;
+import json.JsonArray;
+import json.JsonNumber;
+import json.JsonObject;
+import json.Tuple;
 
 /**
  * Created by Andrii_Rodionov on 1/3/2017.
@@ -19,12 +26,12 @@ public class JSONApp {
         JsonPair marks = new JsonPair("marks", jMarks);
         JsonPair year = new JsonPair("year", jYear);
         JsonObject jsonObj = new JsonObject(name, surname, year, marks);
-        print(jsonObj); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj);
 
-        print(jsonObj.projection("surname", "age", "year", "marks")); // {'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj.projection("surname", "age", "year", "marks"));
 
         BasicStudent basicStudent = new BasicStudent("Andrii", "Rodionov", 2);
-        print(basicStudent.toJsonObject()); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2}
+        print(basicStudent.toJsonObject());
 
     }
 
@@ -33,7 +40,7 @@ public class JSONApp {
     }
 
     public static JsonObject sessionResult() {
-        Student AndriiRodionov = new Student(
+        Student andriiRodionov = new Student(
                 "Andrii",
                 "Rodionov",
                 2,
@@ -42,6 +49,6 @@ public class JSONApp {
                 new Tuple<>("Math", 2)
         );
 
-        return AndriiRodionov.toJsonObject();
+        return andriiRodionov.toJsonObject();
     }
 }
